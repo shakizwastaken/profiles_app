@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import "./app.css";
 
@@ -5,9 +6,9 @@ function App() {
   const [data, setData] = useState();
 
   const fetchData = async () => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((res) => res.json())
-      .then((data) => setData(data));
+    axios
+      .get("https://jsonplaceholder.typicode.com/users")
+      .then(({ data }) => setData(data));
   };
 
   useEffect(() => {
